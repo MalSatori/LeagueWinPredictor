@@ -15,6 +15,10 @@ def main():
     get_stats_from_matches()
 
 
+def hold():
+    while not RiotAPI('RGAPI-dd446914-d130-4817-a1c2-bad4d08ed858').can_make_request():
+        time.sleep(1)
+
 #This pulls the matches from the Riot API.
 def get_matches(api):
     with open(os.path.join(os.path.dirname(__file__), 'training_data', 'matchIDs.txt'), 'r+') as file:
@@ -23,6 +27,7 @@ def get_matches(api):
             try:
                 with open(os.path.join(os.path.dirname(__file__), 'training_data/matches', match + '.txt'), 'x') as file:
                     print('Pulling match #' + match)
+                    hold()
                     h = api.get_match_by_id(match)
                     if not h == 0:
                         json.dump(h, file, indent=4)
@@ -63,6 +68,7 @@ def get_matchIDs(api):
             print('Pulling summoner #' + match)
             try:
                 with open(os.path.join(os.path.dirname(__file__), 'training_data/summoners/', summoner + '.txt'), 'x') as f:
+                    hold()
                     t = apir.get_matches_by_id(summoner)
                     if t != 0:
                         json.dump(t, f, indent=4)
