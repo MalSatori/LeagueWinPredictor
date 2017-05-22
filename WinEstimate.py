@@ -43,6 +43,7 @@ class RiotAPI(object):
     def can_make_request(self):
         for lim in self.limits:
             if not lim.request_available():
+                time.sleep(.5)
                 return False
             return True
 
