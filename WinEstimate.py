@@ -6,11 +6,12 @@ from collections import deque
 
 def opt_out(response):
     if response.status_code in [400, 404, 500, 502, 503]:
-        print('Got error. Moving on.')
+        print('Got error ' + str(response.status_code) + '. Moving on.')
         return False
     if response.status_code in [403,429]:
-        print("Attempting too many requests. Exiting.")
-        exit()
+        print('Got a ' + str(response.status_code) + '. Pausing for ' + response.headers['Retry-After'] + 'seconds.')
+        time.sleep(int(response.headers['Retry-After']))
+        return False
     return True
 
 
@@ -35,7 +36,7 @@ class RateLimit:
 
 
 class RiotAPI(object):
-    def __init__(self, api_key, region=riot.REGIONS['north_america'], limits=(RateLimit(10, 10), RateLimit(500, 600), )):
+    def __init__(self, api_key, region=riot.REGIONS['north_america'], limits=(RateLimit(5, 6), RateLimit(500, 600), )):
         self.api_key = api_key
         self.region = region
         self.limits = limits
@@ -43,7 +44,6 @@ class RiotAPI(object):
     def can_make_request(self):
         for lim in self.limits:
             if not lim.request_available():
-                time.sleep(.5)
                 return False
             return True
 
