@@ -6,8 +6,8 @@ import time
 
 
 def main():
-    api = RiotAPI('RGAPI-dd446914-d130-4817-a1c2-bad4d08ed858')
-    # api = RiotAPI('RGAPI-826d5283-e20d-4ceb-b890-dc2ce5e91fb9')
+    api = RiotAPI('key')
+    # api = RiotAPI('hey')
     get_matches(api)
     get_summonerIDs(api)
     get_matchIDs(api)
