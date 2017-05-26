@@ -7,7 +7,7 @@ import time
 
 def main():
     api = RiotAPI('key')
-    # api = RiotAPI('hey')
+    # api = RiotAPI('key')
     get_matches(api)
     get_summonerIDs(api)
     get_matchIDs(api)
