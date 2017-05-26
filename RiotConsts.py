@@ -34,5 +34,3 @@ SERVERTYPE = {
 
 summoner_id = 21792220
 
-api_key = 'RGAPI-9a575e99-756f-4899-a124-1ea2dd3bbebb'
-
