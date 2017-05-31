@@ -6,8 +6,8 @@ import time
 
 
 def main():
-    api = RiotAPI('key')
-    # api = RiotAPI('key')
+    api = RiotAPI('RGAPI-dd446914-d130-4817-a1c2-bad4d08ed858')
+    # api = RiotAPI('RGAPI-826d5283-e20d-4ceb-b890-dc2ce5e91fb9')
     get_matches(api)
     get_summonerIDs(api)
     get_matchIDs(api)
@@ -16,8 +16,9 @@ def main():
 
 
 def hold():
-    while not RiotAPI('key').can_make_request():
+    while not RiotAPI('RGAPI-dd446914-d130-4817-a1c2-bad4d08ed858').can_make_request():
         time.sleep(1)
+
 
 #This pulls the matches from the Riot API.
 def get_matches(api):
@@ -53,7 +54,7 @@ def get_matches(api):
 
 #This pulls the match history of a summoner from the Riot API.
 def get_matchIDs(api):
-    apir = RiotAPI('key', 'na')
+    apir = RiotAPI('RGAPI-dd446914-d130-4817-a1c2-bad4d08ed858', 'na')
     with open(os.path.join(os.path.dirname(__file__), 'training_data', 'summonerIDs.txt'), 'r+') as file:
         for line in file:
             summoner = line.rstrip()

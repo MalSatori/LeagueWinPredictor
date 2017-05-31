@@ -5,7 +5,7 @@ from collections import deque
 
 
 def opt_out(response):
-    if response.status_code in [400, 404, 500, 502, 503]:
+    if response.status_code in [400, 404, 500, 502, 503, 504]:
         print('Got error ' + str(response.status_code) + '. Moving on.')
         return False
     if response.status_code in [403,429]:
