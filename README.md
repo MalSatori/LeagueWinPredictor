@@ -1,2 +1,3 @@
 "# Pull League Matches" 
 Based on RiotWatcher (https://github.com/pseudonym117/Riot-Watcher) and Cassiopeia (https://github.com/meraki-analytics/cassiopeia), this project recursively collects matches from the Riot API.
+After pulling a sufficient number of matches, I ran them through some of the models from (https://www.youtube.com/watch?v=6tQhoUuQrOw) to predict if red side or blue side will win a league match based on the champions in the game. I am hoping to also test the models generated with the methods in Siraj's video against the neural nets in (https://github.com/vingtfranc/LoLAnalyzer).
