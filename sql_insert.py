@@ -3,7 +3,7 @@ import sqlite3
 import json
 from datetime import datetime
 from pprint import pprint
-from WinEstimate import RiotAPI
+from req import RiotAPI
 import time
 import pandas as pd
 
